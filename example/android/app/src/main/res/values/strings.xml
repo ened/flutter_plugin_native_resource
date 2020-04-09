@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Example App Name</string>
+  <string name="sample_key">Sample Value</string>
+</resources>
