@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class NativeResource {
-  static NativeResource _instance;
+  static NativeResource? _instance;
 
   factory NativeResource() {
     return _instance ??= NativeResource.private(
@@ -17,10 +17,10 @@ class NativeResource {
 
   final MethodChannel _channel;
 
-  Future<String> read({
-    @required String androidResourceName,
-    @required String iosPlistKey,
-    String iosPlistFile,
+  Future<String?> read({
+    required String androidResourceName,
+    required String iosPlistKey,
+    String? iosPlistFile,
   }) async {
     return await _channel.invokeMethod<String>('read', {
       'android-resource-name': androidResourceName,
