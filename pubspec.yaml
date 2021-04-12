@@ -1,6 +1,6 @@
 name: native_resource
 description: Retrieve resource values stored in the native side of an iOS or Android App.
-version: 0.0.1
+version: 0.1.0
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
