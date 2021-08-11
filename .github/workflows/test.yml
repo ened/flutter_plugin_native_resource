@@ -50,8 +50,7 @@ jobs:
           channel: 'stable'
       # Run flutter integrate tests
       - name: Run Flutter integration tests
-          script: cd example && flutter test integration_test/native_resource_integration_test.dart
-
+        run: cd example && flutter test integration_test/native_resource_integration_test.dart
 
   drive_android:
     runs-on: macos-latest
