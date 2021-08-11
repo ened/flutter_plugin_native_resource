@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-/// Retrieve values stored in the native resource system, like .plist files on iOS 
+/// Retrieve values stored in the native resource system, like .plist files on iOS
 /// and .xml files in the `res/values` folder on Android.
 class NativeResource {
   static NativeResource? _instance;
@@ -26,15 +26,17 @@ class NativeResource {
   /// plist file to read the value from.
   ///
   /// On Android `androidResourceName` is resolved using the resource system.
-  Future<String?> read({
+  ///
+  /// If the property can not be resolved, a exception is thrown.
+  Future<String> read({
     required String androidResourceName,
     required String iosPlistKey,
     String? iosPlistFile,
   }) async {
-    return await _channel.invokeMethod<String>('read', {
+    return (await _channel.invokeMethod<String>('read', {
       'android-resource-name': androidResourceName,
       'ios-plist-key': iosPlistKey,
       'ios-plist-file': iosPlistFile,
-    });
+    }))!;
   }
 }
