@@ -26,6 +26,8 @@ class NativeResource {
   /// plist file to read the value from.
   ///
   /// On Android `androidResourceName` is resolved using the resource system.
+  ///
+  /// If the property can not be resolved, a exception is thrown.
   Future<String> read({
     required String androidResourceName,
     required String iosPlistKey,
