@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:native_resource/native_resource.dart';
@@ -23,6 +25,13 @@ void main() {
         iosPlistFile: 'Test',
       ),
       'Sample Value',
+    );
+  });
+
+  testWidgets("raw resource file", (WidgetTester tester) async {
+    expect(
+      await NativeResource().readRaw(resourceName: 'data'),
+      'RAW RAW RAW\n'.codeUnits,
     );
   });
 }
