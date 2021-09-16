@@ -13,12 +13,23 @@ public class SwiftNativeResourcePlugin: NSObject, FlutterPlugin {
         case "read":
             handleRead(call, result)
             break
+        case "readRaw":
+            handleReadRaw(call, result)
+            break
         default:
             result(FlutterMethodNotImplemented)
             break
         }
     }
     
+    func handleReadRaw(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        guard let path = Bundle.main.path(forResource: call.arguments as? String, ofType: nil) else {
+            result(FlutterError(code: "invalid-params", message: nil, details: nil))
+            return
+        }
+        
+        result(NSData(contentsOfFile: path))
+    }
     
     func handleRead(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         guard let map: [String: Any] = call.arguments as? [String:Any],
