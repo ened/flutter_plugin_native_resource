@@ -1,4 +1,4 @@
-group 'asia.ivity.flutter.native_resource'
+group 'asia.ivity.flutter.nativeresource'
 version '1.0-SNAPSHOT'
 
 buildscript {

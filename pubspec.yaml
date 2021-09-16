@@ -1,6 +1,6 @@
 name: native_resource
 description: Retrieve resource values stored in the native side of an iOS or Android App.
-version: 0.3.0
+version: 0.3.1
 homepage: https://github.com/ened/flutter_plugin_native_resource/
 
 environment:
@@ -19,7 +19,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: asia.ivity.flutter.native_resource
+        package: asia.ivity.flutter.nativeresource
         pluginClass: NativeResourcePlugin
       ios:
         pluginClass: NativeResourcePlugin
