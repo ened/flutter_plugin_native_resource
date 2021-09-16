@@ -8,7 +8,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
-
 enum class ResourceType {
     string,
     raw
@@ -23,7 +22,7 @@ private val ResourceType.defType: String
 private fun ResourceType.identifier(context: Context, key: String): Int? {
     val identifier = context.resources.getIdentifier(key, defType, context.packageName)
 
-    if (identifier == 0) return null;
+    if (identifier == 0) return null
 
     return identifier
 }
@@ -42,12 +41,14 @@ public class NativeResourcePlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
     private lateinit var applicationContext: Context
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onAttachedToEngine(
+        @NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding
+    ) {
         channel = MethodChannel(
             flutterPluginBinding.binaryMessenger,
             "asia.ivity.flutter/native_resource/methods"
         )
-        channel.setMethodCallHandler(this);
+        channel.setMethodCallHandler(this)
         applicationContext = flutterPluginBinding.applicationContext
     }
 
