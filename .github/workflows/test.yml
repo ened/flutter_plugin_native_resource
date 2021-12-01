@@ -25,25 +25,15 @@ jobs:
     strategy:
       matrix:
         device:
-          - "iPhone 11 Pro Simulator (15.0)"
+          - "iPhone 11 Pro"
       fail-fast: false
     runs-on: macos-latest
     needs: test
     steps:
-      - name: List all simulators
-        run: xcrun xctrace list devices
-      # get UUID  simulator and boot a simulator on mac from  command line
-      - name: Start Simulator
-        run: |
-          UDID=$(
-            xcrun xctrace list devices |
-            awk \
-              -F ' *[][]' \
-              -v 'device=${{ matrix.device }}' \
-              '$1 == device { print $2 }'
-          )
-          xcrun simctl boot "${UDID:?No Simulator with this name found}"
       - uses: actions/checkout@v2
+      - uses: futureware-tech/simulator-action@v1
+        with:
+          model: ${{ matrix.device }}
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
