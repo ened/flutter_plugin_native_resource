@@ -25,19 +25,18 @@ jobs:
     strategy:
       matrix:
         device:
-          # - "iPhone 8 (14.4)"
-          - "iPhone 11 Pro (14.4)"
+          - "iPhone 11 Pro Simulator (15.0)"
       fail-fast: false
     runs-on: macos-latest
     needs: test
     steps:
       - name: List all simulators
-        run: xcrun instruments -s
+        run: xcrun xctrace list devices
       # get UUID  simulator and boot a simulator on mac from  command line
       - name: Start Simulator
         run: |
           UDID=$(
-            xcrun instruments -s |
+            xcrun xctrace list devices |
             awk \
               -F ' *[][]' \
               -v 'device=${{ matrix.device }}' \
