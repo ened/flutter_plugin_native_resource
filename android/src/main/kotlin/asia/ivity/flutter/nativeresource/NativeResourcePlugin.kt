@@ -1,4 +1,4 @@
-package asia.ivity.flutternative_resource
+package asia.ivity.flutter.nativeresource
 
 import android.content.Context
 import androidx.annotation.NonNull
